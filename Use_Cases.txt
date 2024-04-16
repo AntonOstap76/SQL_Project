@@ -1,0 +1,57 @@
+Use Case 1: Browse Available Cars
+Actor: Customer
+
+Description:
+
+The customer accesses the car sales system.
+The system displays a list of available cars along with essential details such as model, color, and price.
+The customer can filter and search for specific cars based on criteria like manufacturer, model, or price range.
+The customer selects a car to view detailed information.
+Use Case 2: Purchase a Car
+Actors: Customer, Salesperson
+
+Description:
+
+The customer expresses interest in purchasing a specific car.
+The salesperson assists the customer in the purchase process.
+The salesperson checks the availability and details of the selected car.
+The system generates a sales transaction for the purchase, recording customer and salesperson information.
+The salesperson initiates the payment process and records the payment details.
+If desired, the salesperson updates the insurance information for the purchased car.
+Use Case 3: Manage Inventory
+Actor: Administrator
+
+Description:
+
+The administrator logs into the system.
+The system provides access to the inventory management functionality.
+The administrator can add new cars to the inventory, specifying details such as model, color, and manufacturing date.
+The administrator can update the status of cars (e.g., available, sold) based on transactions.
+The administrator can view and edit information related to manufacturers, models, and variants.
+Use Case 4: View Sales Report
+Actor: Manager
+
+Description:
+
+The manager logs into the system.
+The system provides access to reporting functionalities.
+The manager selects the desired time period for the sales report.
+The system generates and displays a report showing the number of cars sold, total revenue, and other relevant metrics.
+Use Case 5: Manage Customer Information
+Actor: Customer Support
+
+Description:
+
+A customer support representative logs into the system.
+The system provides access to customer information.
+The representative can search for customers and view their details.
+The representative can update customer information, such as contact details.
+Use Case 6: Process Insurance Claims
+Actor: Insurance Coordinator
+
+Description:
+
+An insurance coordinator logs into the system.
+The system provides access to insurance-related functionalities.
+The coordinator can view information about insured cars and their coverage.
+If a claim is submitted, the coordinator can update the claim status and process necessary information.

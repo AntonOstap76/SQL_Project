@@ -1,0 +1,45 @@
+Anton Ostapchuk
+
+The CarSalesDatabase schema, as defined in the provided SQL and DBML examples, represents a relational database for managing information related to car sales. Here's a brief description of each table in the schema:
+
+Manufacturer Table:
+
+Stores information about car manufacturers.
+Fields: ManufacturerID (Primary Key), ManufacturerName.
+CarModel Table:
+
+Represents various car models produced by manufacturers.
+Fields: ModelID (Primary Key), ManufacturerID (Foreign Key), ModelName, Year.
+CarVariant Table:
+
+Defines different variants of car models with their prices.
+Fields: VariantID (Primary Key), ModelID (Foreign Key), VariantName, Price.
+CarColor Table:
+
+Contains information about available car colors.
+Fields: ColorID (Primary Key), ColorName.
+Car Table:
+
+Represents individual cars with details like registration number, manufacturing date, mileage, and status.
+Fields: CarID (Primary Key), VariantID (Foreign Key), ColorID (Foreign Key), RegistrationNumber, ManufacturingDate, Mileage, Status.
+Customer Table:
+
+Stores information about customers.
+Fields: CustomerID (Primary Key), FirstName, LastName, Email, Phone.
+Salesperson Table:
+
+Contains details of salespersons involved in car transactions.
+Fields: SalespersonID (Primary Key), FirstName, LastName, Email, Phone.
+SalesTransaction Table:
+
+Records sales transactions, linking customers, salespersons, and specific cars.
+Fields: TransactionID (Primary Key), CustomerID (Foreign Key), SalespersonID (Foreign Key), CarID (Foreign Key), TransactionDate, TransactionAmount.
+Payment Table:
+
+Records payments related to sales transactions.
+Fields: PaymentID (Primary Key), TransactionID (Foreign Key), PaymentDate, Amount.
+Insurance Table:
+
+Contains information about insurance policies for cars.
+Fields: InsuranceID (Primary Key), CarID (Foreign Key), InsuranceProvider, CoverageStartDate, CoverageEndDate.
+This schema is designed to capture and organize data related to car sales, including details about manufacturers, models, variants, colors, individual cars, customers, salespersons, transactions, payments, and insurance. Foreign key relationships link the tables to establish connections and maintain data integrity.

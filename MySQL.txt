@@ -1,0 +1,96 @@
+-- Create or use a database
+CREATE DATABASE IF NOT EXISTS CarSalesDatabase;
+USE CarSalesDatabase;
+
+-- Table 1: Manufacturer
+CREATE TABLE Manufacturer (
+    ManufacturerID INT PRIMARY KEY,
+    ManufacturerName VARCHAR(255) NOT NULL
+);
+
+-- Table 2: CarModel
+CREATE TABLE CarModel (
+    ModelID INT PRIMARY KEY,
+    ManufacturerID INT,
+    ModelName VARCHAR(255) NOT NULL,
+    Year INT,
+    FOREIGN KEY (ManufacturerID) REFERENCES Manufacturer(ManufacturerID)
+);
+
+-- Table 3: CarVariant
+CREATE TABLE CarVariant (
+    VariantID INT PRIMARY KEY,
+    ModelID INT,
+    VariantName VARCHAR(255) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (ModelID) REFERENCES CarModel(ModelID)
+);
+
+-- Table 4: CarColor
+CREATE TABLE CarColor (
+    ColorID INT PRIMARY KEY,
+    ColorName VARCHAR(255) NOT NULL
+);
+
+-- Table 5: Car
+CREATE TABLE Car (
+    CarID INT PRIMARY KEY,
+    VariantID INT,
+    ColorID INT,
+    RegistrationNumber VARCHAR(50) NOT NULL,
+    ManufacturingDate DATE NOT NULL,
+    Mileage INT,
+    Status VARCHAR(20) NOT NULL,
+    FOREIGN KEY (VariantID) REFERENCES CarVariant(VariantID),
+    FOREIGN KEY (ColorID) REFERENCES CarColor(ColorID)
+);
+
+-- Table 6: Customer
+CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Phone VARCHAR(20) NOT NULL
+);
+
+-- Table 7: Salesperson
+CREATE TABLE Salesperson (
+    SalespersonID INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Phone VARCHAR(20) NOT NULL
+);
+
+-- Table 8: SalesTransaction
+CREATE TABLE SalesTransaction (
+    TransactionID INT PRIMARY KEY,
+    CustomerID INT,
+    SalespersonID INT,
+    CarID INT,
+    TransactionDate DATE NOT NULL,
+    TransactionAmount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+    FOREIGN KEY (SalespersonID) REFERENCES Salesperson(SalespersonID),
+    FOREIGN KEY (CarID) REFERENCES Car(CarID)
+);
+
+-- Table 9: Payment
+CREATE TABLE Payment (
+    PaymentID INT PRIMARY KEY,
+    TransactionID INT,
+    PaymentDate DATE NOT NULL,
+    Amount DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (TransactionID) REFERENCES SalesTransaction(TransactionID)
+);
+
+-- Table 10: Insurance
+CREATE TABLE Insurance (
+    InsuranceID INT PRIMARY KEY,
+    CarID INT,
+    InsuranceProvider VARCHAR(255) NOT NULL,
+    CoverageStartDate DATE NOT NULL,
+    CoverageEndDate DATE NOT NULL,
+    FOREIGN KEY (CarID) REFERENCES Car(CarID)
+);
